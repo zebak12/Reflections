@@ -6,26 +6,39 @@
 
 	We can push the changes of 2 different files in the staging area and then push them in a single commit, mostly when both the files are changed for one feature (and hence better for the commit name)
 
-> How can you use the staging area to make sure you have one commit per logical
-change?
+> How can you use the staging area to make sure you have one commit per logical change?
 
-	
+	Using git diff --staged to see what has been added since the last commit and hence is made sure is for a single logical change.
 
-> What are some situations when branches would be helpful in keeping your history
-organized? How would branches help?
+> What are some situations when branches would be helpful in keeping your history organized? How would branches help?
 
-	
+	If you want to introduce a new experimental feature so you can make a branch for that while you continue working on the main branch as well.
 
 > How do the diagrams help you visualize the branch structure?
 
-	
+	It makes it more clear that who the parent of the commit is and also to make out the unreachable commit.
 
-> What is the result of merging two branches together? Why do we represent it in
-the diagram the way we do?
+> What is the result of merging two branches together? Why do we represent it in the diagram the way we do?
 
-
+	The earlier branched experimental feature once stable can be added to the master branch by merging.
 
 > What are the pros and cons of Git's automatic merging vs. always doing merges
 manually?
 
-	
+	It tells which part of the code is giving the conflict which the dev can resolve manually within the marked part.
+
+
+Commands: 
+
+git add  |    Add a file to the staging area
+git commit  |    Commit the files from the staging area to the repository 
+git status  |    Show which files are in the staging area, and which files from the working directory are not part of the repository    
+git diff  |    Git diff without arguments is comparing the working directory with the staging area
+git diff --staged  |    Compare the staging area with the repository
+git reset --hard  |    Undo all changes! There is no rollback for this, so be carefull!
+git checkout master  |    Restore the "Head" to the latest check-in
+git log --graph --oneline <branch1> <branch2>  |    Show a visual representation of the commit history within different branches
+git checkout -b new_branch_name  |    Creates a new branch and do a checkout on this branch in one call instead of git branch new_branch_name and git checkout new_branch_name
+git merge branch1 branch2  |    Merge two branches, branch2 get merged into branch1
+git branch -d name  |    Remove the branch with the specified name
+git show commitId | Show the changes made in this commit compared to the previous version. This is working even after merging.
